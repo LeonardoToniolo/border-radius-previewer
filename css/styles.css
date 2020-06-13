@@ -19,6 +19,10 @@ body {
     }
 }
 
+.title-border {
+    margin: 15px;
+}
+
 .App-header {
     background-color: #282c34;
     min-height: 50vh;
