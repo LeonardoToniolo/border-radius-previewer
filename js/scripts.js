@@ -1,60 +1,45 @@
-(function($) {
-    "use strict"; // Start of use strict
-  
-    // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-        if (target.length) {
-          $('html, body').animate({
-            scrollTop: (target.offset().top - 71)
-          }, 1000, "easeInOutExpo");
-          return false;
-        }
-      }
-    });
-  })(jQuery); // End of use strict
+const box_example = document.getElementById("box_example")
+const clipboard_field = document.getElementById("clipboard")
+const extract_btn = document.getElementById("extract-btn")
+addToClipboard()
 
+$("#form-border").submit(function(e){
+    return false;
+});
+
+$("#form-extract").submit(function(e){
+    return false;
+});
 
 function Enviar() {
     const box_example = document.getElementById("box_example")
-    let a = document.getElementById("a").value != "" ? document.getElementById("a").value : "";
-    let b = document.getElementById("b").value != "" ? document.getElementById("b").value : "";
-    let c = document.getElementById("c").value != "" ? document.getElementById("c").value : "";
-    let d = document.getElementById("d").value != "" ? document.getElementById("d").value : "";
-    let e = document.getElementById("e").value != "" ? document.getElementById("e").value : "";
-    let f = document.getElementById("f").value != "" ? document.getElementById("f").value : "";
-    let g = document.getElementById("g").value != "" ? document.getElementById("g").value : "";
-    let h = document.getElementById("h").value != "" ? document.getElementById("h").value : "";
-
-    console.log(e != "" ? a +" "+ b +" "+ c +" "+ d + " / " + e +" "+ f +" "+ g +" "+ h : a +" "+ b +" "+ c +" "+ d)
-
-    box_example.style.borderRadius = e != "" ? a +" "+ b +" "+ c +" "+ d + " / " + e +" "+ f +" "+ g +" "+ h : a +" "+ b +" "+ c +" "+ d;
-
+    let box_height = document.getElementById("box_height").value;
+    let box_width = document.getElementById("box_width").value;
+    let border_radius = document.getElementById("border_radius").value != "" ?
+        document.getElementById("border_radius").value : "";
+    box_height != "" ? box_example.style.height = box_height : box_height = "";
+    box_width != "" ? box_example.style.width = box_width : box_width = "" ;
+    box_example.style.borderRadius = border_radius;
+    addToClipboard()
 }
 
-function Extract() {
-    const box_example = document.getElementById("box_example")
+extract_btn.addEventListener('click', () => {
+    clipboard_field.select();
+    clipboard_field.setSelectionRange(0, 99999);
+    document.execCommand("copy")
+});
 
-    var styles = window.getComputedStyle(box_example, null);
+function addNewStyle(style, styles){
+    return style + ": " + styles[style] + '; \n';
+}
+
+function addToClipboard() {
+    let styles = window.getComputedStyle(box_example, null)
+    let clipboardFile = ".box_example { \n"
     for (style in styles) {
-        if (style.includes("Radius") && style.includes("border") && !style.includes("borderRadius"))
-            console.log(style, styles[style])
+        if (style == "borderRadius" || style == "width" || style == "height")
+            clipboardFile += "    " + addNewStyle(style,styles)
     }
-}
-
-function myFunction() {
-    /* Get the text field */
-    var copyText = document.getElementById("myInput");
-
-    /* Select the text field */
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-    /* Copy the text inside the text field */
-    document.execCommand("copy");
-
-    /* Alert the copied text */
-    alert("Copied the text: " + copyText.value);
+    clipboardFile += '}'
+    clipboard_field.value = clipboardFile.replace("borderRadius", "border-radius")
 }

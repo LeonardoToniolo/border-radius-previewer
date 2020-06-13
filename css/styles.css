@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 0px;
+    padding: 0;
     font-family: Roboto;
 }
 
@@ -30,22 +30,35 @@ body {
     color: white;
 }
 
-.input-container {
+.bottom-container {
     background-color: #282c34;
-    min-height: 50vh;
-    min-width: 50vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
     font-size: calc(10px + 2vmin);
     color: white;
+}
+
+.input-container {
+    min-height: 50vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ads-container {
+    min-height: 50vh;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box-example {
     background: #fff;
     width: 150px;
     height: 150px;
+    margin: 55px;
 }
 
 .App-link {

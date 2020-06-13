@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Border Radius Previewer</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
 
@@ -16,8 +16,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+    <script src="node_modules/clipboard/dist/clipboard.js"></script>
 </head>
 
 <body>
@@ -30,44 +32,41 @@
             </div>
 
         </header>
+        <div class="bottom-container">
+            <div class="input-container">
+                <form id="form-border">
+                    <div class="form-group">
+                        <label for="box_width">Width: </label>
+                        <input type="text" class="form-control" name="box_width" id="box_width" placeholder="150px">
+                    </div>
 
-        <div class="input-container">
-            <div class="form-group">
-                <label for="a">a: </label>
-                <input type="text" name="border_top_left" id="a">
+                    <div class="form-group">
+                        <label for="box_height">Height: </label>
+                        <input type="text" class="form-control" name="box_height" id="box_height" placeholder="150px">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="border_radius">Border radius: </label>
+                        <input type="text" class="form-control" name="border_radius" id="border_radius" placeholder="x x x x / x x x x">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" onclick="Enviar();">Submit</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="b">b: </label>
-                <input type="text" name="border_top_right" id="b">
+            <div class="ads-container">
+                <form id="form-extract">
+                    <div class="form-group">
+                        <label for="clipboard">Clipboard</label>
+                        <textarea class="form-control" id="clipboard" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-secondary" id="extract-btn">Extract</button>
+                </form>
+
             </div>
-            <div class="form-group">
-                <label for="c">c: </label>
-                <input type="text" name="border_bottom_right" id="c">
-            </div>
-            <div class="form-group">
-                <label for="d">d: </label>
-                <input type="text" name="border_bottom_left" id="d">
-            </div>
-            /
-            <div class="form-group">
-                <label for="e">e: </label>
-                <input type="text" name="border_top_left" id="e">
-            </div>
-            <div class="form-group">
-                <label for="f">f: </label>
-                <input type="text" name="border_top_right" id="f">
-            </div>
-            <div class="form-group">
-                <label for="g">g: </label>
-                <input type="text" name="border_bottom_right" id="g">
-            </div>
-            <div class="form-group">
-                <label for="h">h: </label>
-                <input type="text" name="border_bottom_left" id="h">
-            </div>
-            <button type="submit" class="btn btn-primary" onclick="Enviar();">Submit</button>
-            <button type="submit" class="btn btn-secondary" onclick="Extract();">Extract</button>
         </div>
+
     </div>
 
 
